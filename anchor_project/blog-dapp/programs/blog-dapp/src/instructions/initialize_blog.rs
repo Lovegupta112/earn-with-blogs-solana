@@ -24,7 +24,9 @@ pub struct InitializeBlogContext<'info> {
     
     #[account(mut)]
     pub blog_author:Signer<'info>,
-    #[account(init,payer=blog_author,space=8+Blog::INIT_SPACE,seeds=[BLOG_SEED.as_bytes(),title.as_bytes(),blog_author.key().as_ref()],bump)]
+    #[account(init,payer=blog_author,space=8+Blog::INIT_SPACE,seeds=[BLOG_SEED.as_bytes(),
+    title.as_bytes(),
+    blog_author.key().as_ref()],bump)]
     pub blog:Account<'info,Blog>, 
     pub system_program:Program<'info,System>
 }

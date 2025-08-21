@@ -1,6 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::states::*;
 
+//TODO : check while deleting blog , will i have to close comment and reaction and bookmark account too 
 pub fn remove_blog(ctx:Context<RemoveBlogContext>)->Result<()>{
     Ok(())
 }
@@ -13,4 +14,6 @@ pub struct RemoveBlogContext<'info>{
     pub blog_author:Signer<'info>,
     #[account(mut,close=blog_author,has_one=blog_author)]
     pub blog:Account<'info,Blog>
+
+    
 }

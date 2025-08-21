@@ -16,7 +16,7 @@ pub mod blog_dapp {
 
     use super::*;
 
-    pub fn initialize(ctx: Context<InitializeBlogContext>,title:String,content:String) -> Result<()> {
+    pub fn add_blog(ctx: Context<InitializeBlogContext>,title:String,content:String) -> Result<()> {
        initialize_blog(ctx, title, content)
     }
      pub fn update_blog(ctx:Context<EditBlogContext>,content:String)->Result<()>{
@@ -29,8 +29,8 @@ pub mod blog_dapp {
         remove_blog(ctx)
     }
 
-    pub fn tip_from_blog(ctx:Context<TipContext>,tip_value:u64)->Result<()>{
-        tip(ctx,tip_value)
+    pub fn tip_from_blog(ctx:Context<TipContext>,tip_amt:u64)->Result<()>{
+        tip(ctx,tip_amt)
     }
 
     

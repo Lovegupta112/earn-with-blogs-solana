@@ -1,19 +1,29 @@
-use anchor_lang::prelude::*;
+use anchor_lang::{prelude::*, system_program};
 use crate::states::*;
 use crate::errors::BlogError;
 
+//TODO: can user tip mulitple times ----
 
 
-pub fn tip(ctx:Context<TipContext>,tip_value:u64)->Result<()>{
+pub fn tip(ctx:Context<TipContext>,tip_amt:u64)->Result<()>{
     
     let tip=&mut ctx.accounts.tip;
-    let blog_pkey=ctx.accounts.blog.key();
+    let tip_author=&mut ctx.accounts.tip_author;
+    let blog=&mut ctx.accounts.blog;
+    let program_id= ctx.accounts.system_program.to_account_info();
 
-     require!(tip.total_tip.checked_add(tip_value).is_some(),BlogError::MaxBlogTipReached);
+    //  require!(tip.total_tip.checked_add(tip_value).is_some(),BlogError::MaxBlogTipReached);
+    
+    let cpi_context=CpiContext::new(program_id,system_program::Transfer{
+      from:tip_author.to_account_info(),
+      to:blog.to_account_info()
+    });
 
-     tip.tip_author=ctx.accounts.tip_author.key();
-     tip.related_blog=blog_pkey;
-     tip.total_tip+=tip_value;
+     system_program::transfer(cpi_context, tip_amt)?;
+
+     tip.tip_author=tip_author.key();
+     tip.related_blog=blog.key();
+     tip.total_tip+=tip_amt;
     Ok(())
 }
 

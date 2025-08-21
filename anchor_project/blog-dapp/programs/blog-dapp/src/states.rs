@@ -1,8 +1,8 @@
 use anchor_lang::prelude::*;
 
-pub const CONTENT_LENGTH:usize=1000; 
+pub const CONTENT_LENGTH:usize=800; 
 pub const COMMENT_LENGTH:usize=500; 
-pub const TITLE_LENGTH:usize=25;
+pub const TITLE_LENGTH:usize=30;
 pub const BLOG_SEED:&str="BLOG_SEED";
 pub const COMMENT_SEED:&str="COMMENT_SEED";
 pub const REACTION_SEED:&str="REACTION_SEED";
