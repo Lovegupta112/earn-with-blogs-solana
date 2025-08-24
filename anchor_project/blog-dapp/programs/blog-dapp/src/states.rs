@@ -1,12 +1,13 @@
 use anchor_lang::prelude::*;
 
 pub const CONTENT_LENGTH:usize=800; 
-pub const COMMENT_LENGTH:usize=500; 
+pub const COMMENT_LENGTH:usize=400; 
 pub const TITLE_LENGTH:usize=30;
 pub const BLOG_SEED:&str="BLOG_SEED";
 pub const COMMENT_SEED:&str="COMMENT_SEED";
 pub const REACTION_SEED:&str="REACTION_SEED";
 pub const BOOKMARK_SEED:&str="BOOKMARK_SEED";
+pub const TIP_SEED:&str="TIP_SEED";
 
 #[derive(Clone,InitSpace,AnchorDeserialize,AnchorSerialize)]
 pub enum ReactionType{

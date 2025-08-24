@@ -33,7 +33,7 @@ pub struct TipContext<'info>{
   #[account(mut)]
   pub tip_author:Signer<'info>,
 
-  #[account(init,payer=tip_author,space=8+Tip::INIT_SPACE,seeds=[BOOKMARK_SEED.as_bytes(),tip_author.key().as_ref(),blog.key().as_ref()],bump)]
+  #[account(init,payer=tip_author,space=8+Tip::INIT_SPACE,seeds=[TIP_SEED.as_bytes(),tip_author.key().as_ref(),blog.key().as_ref()],bump,constraint=blog.blog_author!=tip_author.key() @BlogError::CannotTipOwnBlog)]
   pub tip:Account<'info,Tip>,
 
   #[account(mut)]

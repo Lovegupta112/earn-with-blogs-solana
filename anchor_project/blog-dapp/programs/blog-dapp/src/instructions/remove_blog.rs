@@ -1,8 +1,8 @@
 use anchor_lang::prelude::*;
 use crate::states::*;
 
-//TODO : check while deleting blog , will i have to close comment and reaction and bookmark account too 
-pub fn remove_blog(ctx:Context<RemoveBlogContext>)->Result<()>{
+//TODO : check while deleting blog , have to close comment and reaction and bookmark account too 
+pub fn remove_blog(_ctx:Context<RemoveBlogContext>)->Result<()>{
     Ok(())
 }
 

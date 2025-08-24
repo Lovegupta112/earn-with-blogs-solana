@@ -22,5 +22,7 @@ pub enum BlogError{
   #[msg("Maximum number of Blog tip Reached")]
  MaxBlogTipReached,
  #[msg("Comment too Long")]
- CommentTooLong
+ CommentTooLong,
+ #[msg("Can not tip own blog")]
+ CannotTipOwnBlog
 }

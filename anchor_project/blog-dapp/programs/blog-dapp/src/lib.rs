@@ -25,11 +25,14 @@ pub mod blog_dapp {
      pub fn save_blog(ctx:Context<BookmarkBlogContext>)->Result<()>{
         bookmarked_blog(ctx)
     }
-     pub fn delete_blog(ctx:Context<RemoveBlogContext>)->Result<()>{
-        remove_blog(ctx)
+     pub fn unsave_blog(ctx:Context<RemoveBookmarkedBlogContext>)->Result<()>{
+        remove_bookmarked_blog(ctx)
     }
+    //  pub fn delete_blog(ctx:Context<RemoveBlogContext>)->Result<()>{
+    //     remove_blog(ctx)
+    // }
 
-    pub fn tip_from_blog(ctx:Context<TipContext>,tip_amt:u64)->Result<()>{
+    pub fn tip_for_blog(ctx:Context<TipContext>,tip_amt:u64)->Result<()>{
         tip(ctx,tip_amt)
     }
 
@@ -39,6 +42,9 @@ pub mod blog_dapp {
     }
     pub fn dislike_blog(ctx:Context<AddReactionContext>)->Result<()>{
         add_reaction(ctx, states::ReactionType::DisLike)
+    }
+    pub fn remove_reaction_blog(ctx:Context<RemoveReactionContext>)->Result<()>{
+        remove_reaction(ctx)
     }
     pub fn comment_blog(ctx:Context<AddCommentContext>,content:String)->Result<()>{
         add_comment(ctx, content)

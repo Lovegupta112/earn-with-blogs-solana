@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::states::*;
 
-pub fn remove_comment(ctx:Context<RemoveCommentContext>)->Result<()>{
+pub fn remove_comment(_ctx:Context<RemoveCommentContext>)->Result<()>{
     Ok(())
 }
 
